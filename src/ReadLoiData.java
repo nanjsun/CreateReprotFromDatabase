@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -6,32 +5,43 @@ import java.util.Scanner;
 public class ReadLoiData {
     private String dataString;
     private String[] testOverview = new String[11];
-    private testData[] partOne = new testData[20];
+    private testData[] testSteps = new testData[20];
 
 //    private testData[] partTwo = new testData[10];
 
-//    public static void main(String[] args) throws Exception{
-//
-//
-//    }
     public void readFile() throws IOException{
 
         Scanner loiData = new Scanner(Paths.get("15091201.TXT"), "UTF-8");
+        String firstLine = loiData.nextLine();
+        StringBuffer sb = new StringBuffer();
+        char[] buf = firstLine.toCharArray();
+//        int iterateCounter = 0;
+        for(char x : buf){
+//            iterateCounter ++;
+            if((int)x == 0 || (int)x > 255 )
+                x = ' ';
+            sb.append(x);
+        }
+        this.dataString = sb.toString();
 
-        this.dataString = loiData.nextLine();
+//        char x = this.dataString.charAt(21);
 
-//        System.out.println(dataString.length());
-//        System.out.println(this.dataString);
+//        System.out.printf("---->%c:%d\n", x, (int)(x));
+//        System.out.print("---->%d", (int)(x));
+
+//        System.out.println(this.dataString.length() + "xx---->\n" + this.dataString);
 
     }
     public void splitData()throws IOException{
-        try{
-            readFile();
-        }
-        catch (IOException e)
-        {
-            System.out.println("wrong!");
-        }
+
+        if(this.dataString == null || this.dataString.length() == 0)
+            try{
+                readFile();
+            }
+            catch (IOException e)
+            {
+                System.out.println("wrong!");
+            }
 //        get test data
         this.testOverview[0] = dataString.substring(0,8);
 //        get test materialId
@@ -59,15 +69,15 @@ public class ReadLoiData {
 
         for(int i = 0; i < 20; i++ ){
 
-            partOne[i] = new testData();
+            testSteps[i] = new testData();
 
 //            System.out.println(dataString.substring(53 + 12 * i, 58 + 12 * i));
-//            partOne[1].setNongdu("1111");
+//            testSteps[1].setNongdu("1111");
 
-            partOne[i].setNongdu(dataString.substring(53 + 12 * i, 57 + 12 * i));
-            this.partOne[i].setTime(dataString.substring(57 + 12 * i, 61 + 12 * i));
-            this.partOne[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
-            this.partOne[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
+            testSteps[i].setNongdu(dataString.substring(53 + 12 * i, 57 + 12 * i));
+            this.testSteps[i].setTime(dataString.substring(57 + 12 * i, 61 + 12 * i));
+            this.testSteps[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
+            this.testSteps[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
         }
 
 
@@ -78,14 +88,19 @@ public class ReadLoiData {
 
         }
         for(int i = 0; i < 20; i++){
-            System.out.println(i + "Nongdu++>" + this.partOne[i].getNongdu() );
-            System.out.println(i + "Time++>" + this.partOne[i].getTime() );
-            System.out.println(i + "Length++>" + this.partOne[i].getLength() );
-            System.out.println(i + "Action++>" + this.partOne[i].getAction() );
+            System.out.println(i + "Nongdu++>" + this.testSteps[i].getNongdu() );
+            System.out.println(i + "Time++>" + this.testSteps[i].getTime() );
+            System.out.println(i + "Length++>" + this.testSteps[i].getLength() );
+            System.out.println(i + "Action++>" + this.testSteps[i].getAction() );
 
         }
 
-        System.out.println(dataString.length() + "-----" + dataString.substring(292, 293) + "+++" + this.partOne[19].getAction());
+//        System.out.println(dataString.length() + "-----" + dataString.substring(292, 293) + "+++" + this.testSteps[19].getAction());
+//        System.out.printf(dataString.charAt(28) + "   int is  : %d ", (int)dataString.charAt(28));
+//        if(dataString.charAt(28) == (char)0){
+//            System.out.println("yes!");
+//
+//        }
 
 
     }
