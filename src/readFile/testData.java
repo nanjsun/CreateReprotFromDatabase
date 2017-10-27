@@ -1,3 +1,5 @@
+package readFile;
+
 public class testData {
     private String nongdu = new String();
     private String time = new String();

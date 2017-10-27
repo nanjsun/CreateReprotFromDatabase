@@ -1,3 +1,7 @@
+package readFile;
+
+import readFile.ReadLoiData;
+
 import java.io.IOException;
 
 public class testMain {
