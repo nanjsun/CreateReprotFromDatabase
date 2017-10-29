@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="readFile.OrganizationEntity" table="Organization" schema="LoiServerDatabase">
+        <id name="organizationId">
+            <column name="Organization_ID" sql-type="int(10) unsigned"/>
+        </id>
+        <property name="organizationName">
+            <column name="Organization_name" sql-type="varchar(40)" length="40" not-null="true"/>
+        </property>
+        <property name="organizationLoiTester">
+            <column name="Organization_LoiTester" sql-type="enum('bought', 'bought from other', 'no')"/>
+        </property>
+        <property name="organizationValidate">
+            <column name="Organization_validate" sql-type="tinyint(1)"/>
+        </property>
+        <property name="organizationComment">
+            <column name="Organization_comment" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
