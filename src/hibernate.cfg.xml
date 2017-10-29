@@ -4,14 +4,20 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://107.172.101.46:3306/LoiServerDatabase</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/LoiServerDatabase</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.autocommit">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.connection.username">dbuser</property>
+        <property name="hibernate.connection.password">0</property>
+
         <mapping class="readFile.OrganizationEntity"/>
         <mapping resource="readFile/OrganizationEntity.hbm.xml"/>
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
+
 
         <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+         <!--<property name="hbm2ddl.auto">update</property> -->
     </session-factory>
 </hibernate-configuration>

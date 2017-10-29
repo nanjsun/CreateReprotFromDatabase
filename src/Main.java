@@ -35,9 +35,9 @@ public class Main {
             for (EntityType<?> entityType : metamodel.getEntities()) {
                 final String entityName = entityType.getName();
                 final Query query = session.createQuery("from " + entityName);
-                System.out.println("executing: " + query.getQueryString());
+                System.out.println("---->executing: " + query.getQueryString());
                 for (Object o : query.list()) {
-                    System.out.println("  " + o);
+                    System.out.println("++++-->  " + o);
                 }
             }
         } finally {
