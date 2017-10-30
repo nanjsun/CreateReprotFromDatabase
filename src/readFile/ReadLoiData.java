@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ReadLoiData {
     private String dataString;
-    private String[] testOverview = new String[11];
+    private String[] testOverview = new String[12];
     private testData[] testSteps = new testData[20];
 
 //    private testData[] partTwo = new testData[10];
@@ -73,11 +73,11 @@ public class ReadLoiData {
 //        get row number of k table
         this.testOverview[8] = dataString.substring(45, 47);
 //        get k*ks, if k*ks < 0, this byte set to 1,
-        this.testOverview[8] = dataString.substring(47, 48);
+        this.testOverview[9] = dataString.substring(47, 48);
 //        get k value, like x.xx
-        this.testOverview[9] = dataString.substring(48, 52);
+        this.testOverview[10] = dataString.substring(48, 52);
 //        get ks , if ks<0  this value is set to 1
-        this.testOverview[10] = dataString.substring(52,53);
+        this.testOverview[11] = dataString.substring(52,53);
 
         for(int i = 0; i < 20; i++ ){
 

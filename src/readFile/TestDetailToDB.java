@@ -46,8 +46,24 @@ public class TestDetailToDB extends testData {
 
         TestDetailEntity testDetailEntity = new TestDetailEntity();
 
-        testDetailEntity.setTestId("seu001");
+//        testDetailEntity.setTestId();
         testDetailEntity.setTestRawDataFromLoi(dataString);
+
+        testDetailEntity.setTestDate(readLoiData.getTestOverview()[0]);
+        testDetailEntity.setTestMaterialId(readLoiData.getTestOverview()[1]);
+        testDetailEntity.setTestMaterialType(readLoiData.getTestOverview()[2]);
+        testDetailEntity.setTestIgniteType(readLoiData.getTestOverview()[3]);
+        testDetailEntity.setTestFinalLoi(readLoiData.getTestOverview()[4]);
+        testDetailEntity.setTestStepLength(readLoiData.getTestOverview()[5]);
+        testDetailEntity.setTestSigma(readLoiData.getTestOverview()[6]);
+//        testDetailEntity.setTestK(readLoiData.getTestOverview()[7]);
+//        testDetailEntity.set(readLoiData.getTestOverview()[8]);
+        testDetailEntity.setTestSignOfKKs(readLoiData.getTestOverview()[9]);
+        testDetailEntity.setTestK(readLoiData.getTestOverview()[10]);
+        testDetailEntity.setTestKs(readLoiData.getTestOverview()[11]);
+
+        testDetailEntity.setTestId("me" + readLoiData.getTestOverview()[0]);
+
 
         System.out.println("---->testid:" + testDetailEntity.getTestId());
 //        testDetailEntity.set
