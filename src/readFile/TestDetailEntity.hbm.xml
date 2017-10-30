@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="readFile.TestDetailEntity" table="TestDetail" schema="LoiServerDatabase">
+        <id name="testId">
+            <column name="Test_ID" sql-type="varchar(11)" length="11"/>
+        </id>
+        <property name="testDate">
+            <column name="Test_date" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testMaterialId">
+            <column name="Test_materialID" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testMaterialType">
+            <column name="Test_materialType" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testIgniteType">
+            <column name="Test_igniteType" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testFinalLoi">
+            <column name="Test_finalLOI" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testStepLength">
+            <column name="Test_stepLength" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testSigma">
+            <column name="Test_sigma" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testSignOfKKs">
+            <column name="Test_signOfKxks" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testK">
+            <column name="Test_k" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testKs">
+            <column name="Test_ks" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testDetail">
+            <column name="Test_detail" sql-type="varchar(250)" length="250" not-null="false"/>
+        </property>
+        <property name="testOperator">
+            <column name="Test_operator" sql-type="varchar(45)" length="45" not-null="false"/>
+        </property>
+        <property name="testRawDataFromLoi">
+            <column name="Test_rawDataFromLOI" sql-type="varchar(300)" length="300" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

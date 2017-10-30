@@ -10,6 +10,16 @@ public class ReadLoiData {
     private testData[] testSteps = new testData[20];
 
 //    private testData[] partTwo = new testData[10];
+    public String getDataString(){
+        return this.dataString;
+    }
+    public String[] getTestOverview(){
+        return this.testOverview;
+    }
+
+    public testData[] getTestSteps(){
+        return this.testSteps;
+    }
 
     public void readFile() throws IOException{
 
