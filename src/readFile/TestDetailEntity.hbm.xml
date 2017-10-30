@@ -38,8 +38,8 @@
         <property name="testKs">
             <column name="Test_ks" sql-type="varchar(45)" length="45" not-null="false"/>
         </property>
-        <property name="testDetail">
-            <column name="Test_detail" sql-type="varchar(250)" length="250" not-null="false"/>
+        <property name="testDetailOfSteps">
+            <column name="Test_detailOfSteps" sql-type="varchar(250)" length="250" not-null="false"/>
         </property>
         <property name="testOperator">
             <column name="Test_operator" sql-type="varchar(45)" length="45" not-null="false"/>

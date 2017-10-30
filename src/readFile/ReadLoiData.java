@@ -8,6 +8,7 @@ public class ReadLoiData {
     private String dataString;
     private String[] testOverview = new String[12];
     private testData[] testSteps = new testData[20];
+    private String detailOfStepsString;
 
 //    private testData[] partTwo = new testData[10];
     public String getDataString(){
@@ -19,6 +20,10 @@ public class ReadLoiData {
 
     public testData[] getTestSteps(){
         return this.testSteps;
+    }
+
+    public String getDetailOfStepsString() {
+        return detailOfStepsString;
     }
 
     public void readFile() throws IOException{
@@ -91,6 +96,8 @@ public class ReadLoiData {
             this.testSteps[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
             this.testSteps[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
         }
+
+        this.detailOfStepsString = dataString.substring(53, 293);
 
 
 

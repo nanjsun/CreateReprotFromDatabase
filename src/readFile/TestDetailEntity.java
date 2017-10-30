@@ -16,7 +16,7 @@ public class TestDetailEntity {
     private String testSignOfKKs;
     private String testK;
     private String testKs;
-    private String testDetail;
+    private String testDetailOfSteps;
     private String testOperator;
     private String testRawDataFromLoi;
 
@@ -132,12 +132,12 @@ public class TestDetailEntity {
 
     @Basic
     @Column(name = "Test_detail", nullable = true, length = 250)
-    public String getTestDetail() {
-        return testDetail;
+    public String getTestDetailOfSteps() {
+        return testDetailOfSteps;
     }
 
-    public void setTestDetail(String testDetail) {
-        this.testDetail = testDetail;
+    public void setTestDetailOfSteps(String testDetail) {
+        this.testDetailOfSteps = testDetail;
     }
 
     @Basic
@@ -183,7 +183,7 @@ public class TestDetailEntity {
             return false;
         if (testK != null ? !testK.equals(that.testK) : that.testK != null) return false;
         if (testKs != null ? !testKs.equals(that.testKs) : that.testKs != null) return false;
-        if (testDetail != null ? !testDetail.equals(that.testDetail) : that.testDetail != null) return false;
+        if (testDetailOfSteps != null ? !testDetailOfSteps.equals(that.testDetailOfSteps) : that.testDetailOfSteps != null) return false;
         if (testOperator != null ? !testOperator.equals(that.testOperator) : that.testOperator != null) return false;
         if (testRawDataFromLoi != null ? !testRawDataFromLoi.equals(that.testRawDataFromLoi) : that.testRawDataFromLoi != null)
             return false;
@@ -204,7 +204,7 @@ public class TestDetailEntity {
         result = 31 * result + (testSignOfKKs != null ? testSignOfKKs.hashCode() : 0);
         result = 31 * result + (testK != null ? testK.hashCode() : 0);
         result = 31 * result + (testKs != null ? testKs.hashCode() : 0);
-        result = 31 * result + (testDetail != null ? testDetail.hashCode() : 0);
+        result = 31 * result + (testDetailOfSteps != null ? testDetailOfSteps.hashCode() : 0);
         result = 31 * result + (testOperator != null ? testOperator.hashCode() : 0);
         result = 31 * result + (testRawDataFromLoi != null ? testRawDataFromLoi.hashCode() : 0);
         return result;

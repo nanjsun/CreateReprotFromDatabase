@@ -5,7 +5,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
+import java.util.Random;
 
 
 
@@ -62,7 +62,14 @@ public class TestDetailToDB extends testData {
         testDetailEntity.setTestK(readLoiData.getTestOverview()[10]);
         testDetailEntity.setTestKs(readLoiData.getTestOverview()[11]);
 
-        testDetailEntity.setTestId("me" + readLoiData.getTestOverview()[0]);
+
+
+        Random random = new Random();
+        int a = random.nextInt(100) ;
+
+        testDetailEntity.setTestId("SEU-" + a + readLoiData.getTestOverview()[0]);
+
+        testDetailEntity.setTestDetailOfSteps(readLoiData.getDetailOfStepsString());
 
 
         System.out.println("---->testid:" + testDetailEntity.getTestId());
