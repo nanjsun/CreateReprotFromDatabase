@@ -32,22 +32,12 @@ public class ReadLoiData {
         String firstLine = loiData.nextLine();
         StringBuffer sb = new StringBuffer();
         char[] buf = firstLine.toCharArray();
-//        int iterateCounter = 0;
         for(char x : buf){
-//            iterateCounter ++;
             if((int)x == 0 || (int)x > 255 )
                 x = ' ';
             sb.append(x);
         }
         this.dataString = sb.toString();
-
-//        char x = this.dataString.charAt(21);
-
-//        System.out.printf("---->%c:%d\n", x, (int)(x));
-//        System.out.print("---->%d", (int)(x));
-
-//        System.out.println(this.dataString.length() + "xx---->\n" + this.dataString);
-
     }
     public void splitData()throws IOException{
 
@@ -84,44 +74,27 @@ public class ReadLoiData {
 //        get ks , if ks<0  this value is set to 1
         this.testOverview[11] = dataString.substring(52,53);
 
+//        assign each details of every ignite to a class, and devide to nongdu, time, length and action.
+//        but not used now.
         for(int i = 0; i < 20; i++ ){
-
             testSteps[i] = new testData();
-
-//            System.out.println(dataString.substring(53 + 12 * i, 58 + 12 * i));
-//            testSteps[1].setNongdu("1111");
-
             testSteps[i].setNongdu(dataString.substring(53 + 12 * i, 57 + 12 * i));
             this.testSteps[i].setTime(dataString.substring(57 + 12 * i, 61 + 12 * i));
             this.testSteps[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
             this.testSteps[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
         }
 
+//        assign all details of all ignite to a String ,this String contain 20 X 12 byte.
         this.detailOfStepsString = dataString.substring(53, 293);
-
-
-
 
         for(int i = 0; i < 11; i++){
             System.out.println(i + "-->" + testOverview[i] );
-
         }
         for(int i = 0; i < 20; i++){
             System.out.println(i + "Nongdu++>" + this.testSteps[i].getNongdu() );
             System.out.println(i + "Time++>" + this.testSteps[i].getTime() );
             System.out.println(i + "Length++>" + this.testSteps[i].getLength() );
             System.out.println(i + "Action++>" + this.testSteps[i].getAction() );
-
         }
-
-//        System.out.println(dataString.length() + "-----" + dataString.substring(292, 293) + "+++" + this.testSteps[19].getAction());
-//        System.out.printf(dataString.charAt(28) + "   int is  : %d ", (int)dataString.charAt(28));
-//        if(dataString.charAt(28) == (char)0){
-//            System.out.println("yes!");
-//
-//        }
-
-
     }
-
 }
