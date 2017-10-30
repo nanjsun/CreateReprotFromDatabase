@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="readFile.OrganizationEntity" table="Organization" schema="LoiServerDatabase">
+    <class name="main.java.readFile.OrganizationEntity" table="Organization" schema="LoiServerDatabase">
         <id name="organizationId">
             <column name="Organization_ID" sql-type="int(10) unsigned"/>
         </id>

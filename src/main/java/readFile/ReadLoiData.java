@@ -1,4 +1,4 @@
-package readFile;
+package main.java.readFile;
 
 import java.io.IOException;
 import java.nio.file.Paths;

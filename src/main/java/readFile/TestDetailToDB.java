@@ -1,4 +1,4 @@
-package readFile;
+package main.java.readFile;
 
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;

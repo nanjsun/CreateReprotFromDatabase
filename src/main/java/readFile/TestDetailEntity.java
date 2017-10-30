@@ -1,4 +1,4 @@
-package readFile;
+package main.java.readFile;
 
 import javax.persistence.*;
 

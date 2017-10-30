@@ -1,6 +1,6 @@
-package readFile;
+package main.java.readFile;
 
-import readFile.ReadLoiData;
+//import readFile.ReadLoiData;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;

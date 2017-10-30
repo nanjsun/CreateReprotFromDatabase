@@ -1,4 +1,4 @@
-package readFile;
+package main.java.readFile;
 
 public class testData {
     private String nongdu = new String();
