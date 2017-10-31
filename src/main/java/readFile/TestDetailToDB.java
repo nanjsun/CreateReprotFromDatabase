@@ -5,19 +5,28 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.io.IOException;
+import com.deepoove.poi.XWPFTemplate;
 
-public class TestDetailToDB extends testData {
+import static java.lang.System.out;
+
+public class TestDetailToDB extends ReadLoiData {
+    private ReadLoiData readLoiData = new ReadLoiData();
+
 
     public void selectTestDetail() throws IOException{
         Configuration config = new Configuration().configure();
         SessionFactory sessionFactory = config.buildSessionFactory();
         Session session = sessionFactory.getSessionFactory().openSession();
-        ReadLoiData readLoiData = new ReadLoiData();
         readLoiData.splitData();
         String dataString = readLoiData.getDataString();
-        System.out.println("-----> \n" + dataString);
+        out.println("-----> \n" + dataString);
         TestDetailEntity testDetailEntity = new TestDetailEntity();
         testDetailEntity.setTestRawDataFromLoi(dataString);
         testDetailEntity.setTestDate(readLoiData.getTestOverview()[0]);
@@ -37,12 +46,48 @@ public class TestDetailToDB extends testData {
 
         testDetailEntity.setTestId("SEU-" + a + readLoiData.getTestOverview()[0]);
         testDetailEntity.setTestDetailOfSteps(readLoiData.getDetailOfStepsString());
-        System.out.println("---->testid:" + testDetailEntity.getTestId());
+        out.println("---->testid:" + testDetailEntity.getTestId());
         Transaction tx = session.beginTransaction();
         session.save(testDetailEntity);
         tx.commit();
-        System.out.println("------> commit ok");
+        out.println("------> commit ok");
         session.close();
         sessionFactory.close();
     }
+
+    public void createReport(){
+        Configuration config = new Configuration().configure();
+        SessionFactory sessionFactory = config.buildSessionFactory();
+        Session session = sessionFactory.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        TestDetailEntity testDetailEntity = (TestDetailEntity) session.get(TestDetailEntity.class, new String("SEU-1120150912"));
+        tx.commit();
+        session.close();
+        sessionFactory.close();
+
+//        System.out.println(testDetailEntity.getTestMaterialId());
+
+        Map<String, Object> datas = new HashMap<String, Object>(){{
+            put("TestMaterialId", testDetailEntity.getTestMaterialId());
+            put("TestMaterialType", testDetailEntity.getTestMaterialId());
+            put("TestIgniteType", testDetailEntity.getTestIgniteType());
+            put("TestStepLength", testDetailEntity.getTestStepLength());
+            put("TestFinalLoi", testDetailEntity.getTestFinalLoi());
+            put("TestDate", testDetailEntity.getTestDate());
+        }};
+
+        XWPFTemplate template = XWPFTemplate.compile("src/main/resources/report_template.docx").render(datas);
+
+        try{
+            FileOutputStream out = new FileOutputStream("report.docx");
+            template.write(out);
+            template.close();
+            out.close();
+        } catch (Exception e){
+            out.println("exception-->:" + e);
+        }
+    }
+
+
+
 }
