@@ -1,4 +1,4 @@
-package main.java.readFile;
+package main.java.readFile.mappingEntity;
 
 import javax.persistence.*;
 

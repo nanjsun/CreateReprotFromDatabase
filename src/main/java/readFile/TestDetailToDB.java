@@ -1,5 +1,6 @@
 package main.java.readFile;
 
+import main.java.readFile.mappingEntity.TestDetailEntity;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;

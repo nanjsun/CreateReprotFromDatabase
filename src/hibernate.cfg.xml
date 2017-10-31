@@ -13,10 +13,10 @@
         <property name="hibernate.connection.username">dbuser</property>
         <property name="hibernate.connection.password">0</property>
 
-        <mapping class="main.java.readFile.OrganizationEntity"/>
-        <mapping resource="main/java/readFile/OrganizationEntity.hbm.xml"/>
-        <mapping class="main.java.readFile.TestDetailEntity"/>
-        <mapping resource="main/java/readFile/TestDetailEntity.hbm.xml"/>
+        <mapping class="main.java.readFile.mappingEntity.OrganizationEntity"/>
+        <mapping resource="main/java/readFile/mappingEntity/OrganizationEntity.hbm.xml"/>
+        <mapping class="main.java.readFile.mappingEntity.TestDetailEntity"/>
+        <mapping resource="main/java/readFile/mappingEntity/TestDetailEntity.hbm.xml"/>
 
 
         <!-- DB schema will be updated if needed -->
