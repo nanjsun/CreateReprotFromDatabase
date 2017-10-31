@@ -1,13 +1,13 @@
 package main.java.readFile;
 
-public class testData {
-    private String nongdu = new String();
+public class IgniteData {
+    private String concentration = new String();
     private String time = new String();
     private String length = new String();
     private String action = new String();
 
-    public String getNongdu() {
-        return nongdu;
+    public String getConcentration() {
+        return concentration;
     }
 
     public String getTime() {
@@ -30,8 +30,8 @@ public class testData {
         this.length = length;
     }
 
-    public void setNongdu(String nongdu) {
-        this.nongdu = nongdu;
+    public void setConcentration(String concentration) {
+        this.concentration = concentration;
     }
 
     public void setTime(String time) {

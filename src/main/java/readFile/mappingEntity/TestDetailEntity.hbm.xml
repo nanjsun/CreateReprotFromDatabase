@@ -47,5 +47,15 @@
         <property name="testRawDataFromLoi">
             <column name="Test_rawDataFromLOI" sql-type="varchar(300)" length="300" not-null="true"/>
         </property>
+
+        <property name="testRowOfK">
+            <column name="Test_rowOfK" sql-type="varchar(5)" length="5" not-null="false"/>
+        </property>
+        <property name="testColumnOfK">
+            <column name="Test_ColumnOfK" sql-type="varchar(5)" length="5" not-null="false"/>
+        </property>
+
+
+
     </class>
 </hibernate-mapping>

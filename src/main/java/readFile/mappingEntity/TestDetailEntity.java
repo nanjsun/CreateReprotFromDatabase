@@ -20,6 +20,9 @@ public class TestDetailEntity {
     private String testOperator;
     private String testRawDataFromLoi;
 
+    private String testRowOfK;
+    private String testColumnOfK;
+
     @Id
     @Column(name = "Test_ID", nullable = false, length = 11)
     public String getTestId() {
@@ -160,6 +163,29 @@ public class TestDetailEntity {
         this.testRawDataFromLoi = testRawDataFromLoi;
     }
 
+
+//    add test_rowOfK
+    @Basic
+    @Column(name = "Test_rowOfK", nullable = true, length = 5)
+    public String getTestRowOfK() {
+        return testRowOfK;
+    }
+
+    public void setTestRowOfK(String testRowOfK) {
+        this.testRowOfK = testRowOfK;
+    }
+
+//    add test_rowOfK
+    @Basic
+    @Column(name = "Test_columnOfK", nullable = true, length = 5)
+    public String getTestColumnOfK() { return testColumnOfK; }
+
+    public void setTestColumnOfK(String testColumnOfK) {
+        this.testColumnOfK = testColumnOfK;
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -187,6 +213,10 @@ public class TestDetailEntity {
         if (testOperator != null ? !testOperator.equals(that.testOperator) : that.testOperator != null) return false;
         if (testRawDataFromLoi != null ? !testRawDataFromLoi.equals(that.testRawDataFromLoi) : that.testRawDataFromLoi != null)
             return false;
+        if (testRowOfK != null ? !testRowOfK.equals(that.testRowOfK) : that.testRowOfK != null)
+            return false;
+        if (testColumnOfK != null ? !testColumnOfK.equals(that.testColumnOfK) : that.testColumnOfK != null)
+            return false;
 
         return true;
     }
@@ -207,6 +237,8 @@ public class TestDetailEntity {
         result = 31 * result + (testDetailOfSteps != null ? testDetailOfSteps.hashCode() : 0);
         result = 31 * result + (testOperator != null ? testOperator.hashCode() : 0);
         result = 31 * result + (testRawDataFromLoi != null ? testRawDataFromLoi.hashCode() : 0);
+        result = 31 * result + (testRowOfK != null ? testRowOfK.hashCode() : 0);
+        result = 31 * result + (testColumnOfK != null ? testColumnOfK.hashCode() : 0);
         return result;
     }
 }
