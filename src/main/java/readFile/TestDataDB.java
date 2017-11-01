@@ -16,38 +16,39 @@ import com.deepoove.poi.XWPFTemplate;
 
 import static java.lang.System.out;
 
-public class TestDetailToDB extends ReadLoiData {
-    private ReadLoiData readLoiData = new ReadLoiData();
+public class TestDataDB {
+    private TestData testData = new TestData();
 
 
-    public void selectTestDetail() throws IOException{
+    public void writeData2DB(String fileName) throws IOException{
         Configuration config = new Configuration().configure();
         SessionFactory sessionFactory = config.buildSessionFactory();
         Session session = sessionFactory.getSessionFactory().openSession();
-        readLoiData.splitData();
-        String dataString = readLoiData.getDataString();
+        testData.readFile(fileName);
+        testData.splitData();
+        String dataString = testData.getDataString();
         out.println("-----> \n" + dataString);
         TestDetailEntity testDetailEntity = new TestDetailEntity();
         testDetailEntity.setTestRawDataFromLoi(dataString);
-        testDetailEntity.setTestDate(readLoiData.getTestOverview()[0]);
-        testDetailEntity.setTestMaterialId(readLoiData.getTestOverview()[1]);
-        testDetailEntity.setTestMaterialType(readLoiData.getTestOverview()[2]);
-        testDetailEntity.setTestIgniteType(readLoiData.getTestOverview()[3]);
-        testDetailEntity.setTestFinalLoi(readLoiData.getTestOverview()[4]);
-        testDetailEntity.setTestStepLength(readLoiData.getTestOverview()[5]);
-        testDetailEntity.setTestSigma(readLoiData.getTestOverview()[6]);
-        testDetailEntity.setTestColumnOfK(readLoiData.getTestOverview()[7]);
-        testDetailEntity.setTestRowOfK(readLoiData.getTestOverview()[8]);
-        testDetailEntity.setTestSignOfKKs(readLoiData.getTestOverview()[9]);
-        testDetailEntity.setTestK(readLoiData.getTestOverview()[10]);
-        testDetailEntity.setTestKs(readLoiData.getTestOverview()[11]);
+        testDetailEntity.setTestDate(testData.getTestOverview()[0]);
+        testDetailEntity.setTestMaterialId(testData.getTestOverview()[1]);
+        testDetailEntity.setTestMaterialType(testData.getTestOverview()[2]);
+        testDetailEntity.setTestIgniteType(testData.getTestOverview()[3]);
+        testDetailEntity.setTestFinalLoi(testData.getTestOverview()[4]);
+        testDetailEntity.setTestStepLength(testData.getTestOverview()[5]);
+        testDetailEntity.setTestSigma(testData.getTestOverview()[6]);
+        testDetailEntity.setTestColumnOfK(testData.getTestOverview()[7]);
+        testDetailEntity.setTestRowOfK(testData.getTestOverview()[8]);
+        testDetailEntity.setTestSignOfKKs(testData.getTestOverview()[9]);
+        testDetailEntity.setTestK(testData.getTestOverview()[10]);
+        testDetailEntity.setTestKs(testData.getTestOverview()[11]);
 
 //        add a random int to TestID(Primary key, unique)
         Random random = new Random();
         int a = random.nextInt(100) ;
 
-        testDetailEntity.setTestId("SEU-" + a + readLoiData.getTestOverview()[0]);
-        testDetailEntity.setTestDetailOfSteps(readLoiData.getDetailOfStepsString());
+        testDetailEntity.setTestId("SEU-" + a + testData.getTestOverview()[0]);
+        testDetailEntity.setTestDetailOfSteps(testData.getDetailOfStepsString());
         out.println("---->testid:" + testDetailEntity.getTestId());
         Transaction tx = session.beginTransaction();
         session.save(testDetailEntity);
@@ -57,12 +58,12 @@ public class TestDetailToDB extends ReadLoiData {
         sessionFactory.close();
     }
 
-    public void createReport(){
+    public void createReport(String testID){
         Configuration config = new Configuration().configure();
         SessionFactory sessionFactory = config.buildSessionFactory();
         Session session = sessionFactory.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        TestDetailEntity testDetailEntity = (TestDetailEntity) session.get(TestDetailEntity.class, new String("SEU-6220150912"));
+        TestDetailEntity testDetailEntity = (TestDetailEntity) session.get(TestDetailEntity.class, new String(testID));
         tx.commit();
         session.close();
         sessionFactory.close();

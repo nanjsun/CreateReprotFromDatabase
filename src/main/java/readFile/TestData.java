@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class ReadLoiData {
+public class TestData {
     private String dataString;
     private String[] testOverview = new String[12];
-    private IgniteData[] testSteps = new IgniteData[20];
+    private IgniteData[] igniteSteps = new IgniteData[20];
     private String detailOfStepsString;
 
 //    private testData[] partTwo = new testData[10];
@@ -18,17 +18,17 @@ public class ReadLoiData {
         return this.testOverview;
     }
 
-    public IgniteData[] getTestSteps(){
-        return this.testSteps;
+    public IgniteData[] getIgniteSteps(){
+        return this.igniteSteps;
     }
 
     public String getDetailOfStepsString() {
         return detailOfStepsString;
     }
 
-    public void readFile() throws IOException{
+    public void readFile(String fileName) throws IOException{
 
-        Scanner loiData = new Scanner(Paths.get("15091201.TXT"), "UTF-8");
+        Scanner loiData = new Scanner(Paths.get(fileName), "UTF-8");
         String firstLine = loiData.nextLine();
         StringBuffer sb = new StringBuffer();
         char[] buf = firstLine.toCharArray();
@@ -41,14 +41,16 @@ public class ReadLoiData {
     }
     public void splitData()throws IOException{
 
-        if(this.dataString == null || this.dataString.length() == 0)
-            try{
-                readFile();
-            }
-            catch (IOException e)
-            {
-                System.out.println("wrong!");
-            }
+        if(this.dataString == null || this.dataString.length() == 0){
+            System.out.println("dataString is not valueable, please readFile() first!");
+        }
+//            try{
+//                readFile();
+//            }
+//            catch (IOException e)
+//            {
+//                System.out.println("wrong!");
+//            }
 //        get test data
         this.testOverview[0] = dataString.substring(0,8);
 //        get test materialId
@@ -77,11 +79,11 @@ public class ReadLoiData {
 //        assign each details of every ignite to a class, and devide to nongdu, time, length and action.
 //        but not used now.
         for(int i = 0; i < 20; i++ ){
-            testSteps[i] = new IgniteData();
-            testSteps[i].setConcentration(dataString.substring(53 + 12 * i, 57 + 12 * i));
-            this.testSteps[i].setTime(dataString.substring(57 + 12 * i, 61 + 12 * i));
-            this.testSteps[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
-            this.testSteps[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
+            igniteSteps[i] = new IgniteData();
+            igniteSteps[i].setConcentration(dataString.substring(53 + 12 * i, 57 + 12 * i));
+            this.igniteSteps[i].setTime(dataString.substring(57 + 12 * i, 61 + 12 * i));
+            this.igniteSteps[i].setLength(dataString.substring(61 + 12 * i, 64 + 12 * i));
+            this.igniteSteps[i].setAction(dataString.substring(64 + 12 * i, 65 + 12 * i));
         }
 
 //        assign all details of all ignite to a String ,this String contain 20 X 12 byte.
@@ -91,10 +93,10 @@ public class ReadLoiData {
             System.out.println(i + "-->" + testOverview[i] );
         }
         for(int i = 0; i < 20; i++){
-            System.out.println(i + "Nongdu++>" + this.testSteps[i].getConcentration() );
-            System.out.println(i + "Time++>" + this.testSteps[i].getTime() );
-            System.out.println(i + "Length++>" + this.testSteps[i].getLength() );
-            System.out.println(i + "Action++>" + this.testSteps[i].getAction() );
+            System.out.println(i + "Nongdu++>" + this.igniteSteps[i].getConcentration() );
+            System.out.println(i + "Time++>" + this.igniteSteps[i].getTime() );
+            System.out.println(i + "Length++>" + this.igniteSteps[i].getLength() );
+            System.out.println(i + "Action++>" + this.igniteSteps[i].getAction() );
         }
     }
 }

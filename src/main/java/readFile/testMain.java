@@ -15,8 +15,8 @@ public class testMain {
 
     public static void main(String[] args) throws IOException{
 
-        TestDetailToDB testDetailToDB = new TestDetailToDB();
-//        testDetailToDB.selectTestDetail();
-        testDetailToDB.createReport();
+        TestDataDB testDataDB = new TestDataDB();
+        testDataDB.writeData2DB("15091701.TXT");
+        testDataDB.createReport("SEU-6320150917");
     }
 }
